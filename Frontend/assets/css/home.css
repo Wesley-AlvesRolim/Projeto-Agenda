@@ -1,0 +1,147 @@
+.container,
+.new-container,
+.login-container {
+    width: 90vw;
+    max-width: 650px;
+    min-height: 200px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #00bbf0;
+    border: 2px solid #fff;
+    overflow-x: hidden;
+    z-index: 1;
+}
+
+.container::before,
+.new-container::before,
+.login-container::before {
+    content: '';
+    width: calc(75% + 350px);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #02a7d4;
+    opacity: .5;
+    z-index: -1;
+    transform: skewX( 30deg) translateX(-50%);
+}
+
+.container header {
+    margin: 5px 0;
+}
+
+.content {
+    text-align: center;
+}
+
+.content h3 {
+    margin-bottom: 10px;
+}
+
+.content>div {
+    max-width: 85vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-x: auto;
+}
+
+.contacts {
+    height: 30px;
+    margin: 0 auto 0 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: .25s ease;
+}
+
+.contacts:hover {
+    height: 75px;
+    margin-bottom: 10px;
+}
+
+.content>div:last-child:hover {
+    margin-bottom: 0px;
+}
+
+.content>div:hover .contacts {
+    filter: blur(1px) opacity(.8) contrast(0.9);
+}
+
+.content>div:hover .contacts:hover {
+    filter: none;
+}
+
+.above {
+    width: 100%;
+    gap: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.above div {
+    white-space: nowrap;
+}
+
+.above i {
+    font-size: 1.5rem;
+    transition: .5s ease-out;
+}
+
+.contacts:hover i {
+    transform: rotate(180deg);
+}
+
+.below {
+    width: 50%;
+}
+
+.below>div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.below button {
+    width: 55px;
+    height: 30px;
+    border: 1px solid transparent;
+    background: none;
+    border-radius: 10px;
+    transition: .5s;
+    opacity: 1;
+    text-shadow: 0 0 1px #000;
+    box-shadow: 0 0 2px #000;
+}
+
+.below button:hover {
+    opacity: .9;
+    border: 1px solid #fff;
+    box-shadow: 0 0 5px #000;
+    transform: scale(1.1) translateY(-5px);
+    cursor: pointer;
+}
+
+.edit button:hover {
+    background: #00ff40;
+}
+
+.delete button:hover {
+    background: #ff0000;
+}
+
+@media (min-width:450px) {
+    .contacts {
+        margin: 0 auto;
+    }
+}

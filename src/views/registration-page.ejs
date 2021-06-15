@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+
+<%- include('./includes/head'); %>
+
+    <section class="login-container">
+        <header>
+            <h2>Criar conta / Entrar</h2>
+            <p>Abaixo você pode criar sua conta.</p>
+        </header>
+        <section class="content-form">
+            <div>
+                <header>
+                    <h3>Criar conta</h3>
+                    <p>Caso não tenha uma conta, use o formulário abaixo para criar uma.</p>
+                </header>
+                <form action="/register" method="POST">
+                    <p>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required placeholder=" ">
+                        <span></span>
+                    </p>
+                    <p>
+                        <label for="password">Senha</label>
+                        <input type="password" name="password" id="password" required placeholder=" ">
+                        <span></span>
+                    </p>
+                    <button type="submit">Criar conta</button>
+                </form>
+            </div>
+            <div>
+                <header>
+                    <h3>Login</h3>
+                    <p>Se já possui uma conta, faça o login abaixo.</p>
+                </header>
+                <form action="/login" method="POST">
+                    <p>
+                        <label for="login-email">Email</label>
+                        <input type="email" name="email" id="login-email" required placeholder=" ">
+                        <span></span>
+                    </p>
+                    <p>
+                        <label for="login-password">Senha</label>
+                        <input type="password" name="password" id="login-password" required placeholder=" ">
+                        <span></span>
+                    </p>
+                    <button type="submit">Entrar</button>
+                </form>
+            </div>
+        </section>
+    </section>
+    <script src="./assets/js/bundle.js"></script>
+    </body>
+
+</html>

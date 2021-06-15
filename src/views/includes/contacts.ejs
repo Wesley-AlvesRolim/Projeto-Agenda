@@ -1,0 +1,24 @@
+<% for( const el of myData ) { %>
+<div class="contacts">
+  <div class="above">
+    <div><%= el.name %></div>
+    <div><%= el.surname %></div>
+    <div><%= el.email %></div>
+    <div><%= el.number %></div>
+    <div>
+      <i class="fa fa-angle-down" aria-hidden="true"></i>
+    </div>
+  </div>
+
+  <div class="below">
+    <div>
+      <span class="edit">
+        <a href="/contact/edit/<%= el['_id'] %>"><button>Editar</button></a>
+      </span>
+      <span class="delete">
+        <a href="/contact/delete/<%= el['_id'] %>"><button>Excluir</button></a>
+      </span>
+    </div>
+  </div>
+</div>
+<% } %>

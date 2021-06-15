@@ -1,0 +1,113 @@
+.login-container,
+.new-container {
+    width: 95vw;
+    max-width: 650px;
+    height: calc(50% + 20px);
+}
+
+.new-container header {
+    margin-bottom: 20px;
+}
+
+.content-form,
+.content-new {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-form>div,
+.content-new>div {
+    min-width: 275px;
+    width: calc(50% - 20px);
+    height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content-form>div>header,
+.content-new>h3 {
+    margin-bottom: 15px;
+}
+
+form p {
+    position: relative;
+}
+
+.content-form label,
+.content-form input,
+.content-new label,
+.content-new input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.content-form input,
+.content-new input {
+    background: none;
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border: none;
+    padding: 5px;
+    outline: none;
+}
+
+.content-form input+span,
+.content-new input+span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 15%;
+    left: -1px;
+    background: #fff;
+    transition: .25s ease;
+    z-index: -1;
+}
+
+.content-form input:not(:placeholder-shown)+span,
+.content-new input:not(:placeholder-shown)+span,
+.content-form input:focus+span,
+.content-new input:focus+span {
+    height: 50%;
+}
+
+.content-form input:not(:placeholder-shown):invalid,
+.content-new input:not(:placeholder-shown):invalid {
+    color: #f00;
+}
+
+.content-form button,
+.content-new button {
+    min-width: 90px;
+    width: calc(50% + 20px);
+    max-width: 125px;
+    height: 35px;
+    padding: 5px;
+    border: none;
+    box-shadow: 0 3px 5px #0681d4;
+    background: #00bbf0;
+    border-radius: 10px;
+    white-space: nowrap;
+    transition: .5s;
+    opacity: .9;
+}
+
+.content-form button:hover,
+.content-new button:hover {
+    opacity: 1;
+    box-shadow: 0 3px 10px #0681d4;
+    transform: scale(1.1) translateY(-5px);
+    cursor: pointer;
+}
+
+@media (max-width:605px){
+    .content-form>div,
+    .content-new>div{
+        flex-grow: 1;
+    }
+}
