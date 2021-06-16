@@ -1,7 +1,9 @@
 const userModel = require('../models/userModel');
 
 exports.loginRender = (req, res) => {
-  res.render('registration-page');
+  const flashMessage = req.flash('error');
+  const message = flashMessage[0] ? flashMessage[0] : false;
+  res.render('registration-page', { message });
 };
 
 exports.login = async (req, res) => {
