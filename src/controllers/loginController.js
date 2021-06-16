@@ -7,10 +7,12 @@ exports.loginRender = (req, res) => {
 exports.login = async (req, res) => {
   const data = req.body;
   const user = await userModel.myData(data);
-  if (user === null) {
+  if (user === null || data.password !== user.password) {
+    req.flash('error', 'Por favor, verifique seu email e senha!');
     res.redirect('/login');
     return;
   }
+
   if (data.email === user.email && data.password === user.password) {
     req.session.user = {
       ...user,
@@ -18,7 +20,7 @@ exports.login = async (req, res) => {
     res.redirect('/');
     return;
   }
-  res.redirect('/login'); //messagem de email/senha errada
+  res.redirect('/login');
   return;
 };
 
