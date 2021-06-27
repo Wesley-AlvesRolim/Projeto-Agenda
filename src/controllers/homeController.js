@@ -1,7 +1,11 @@
 const ContactModel = require('../models/ContactModel');
 
 exports.homePage = async (req, res) => {
-  let myData = await ContactModel.myData();
-  res.render('home', { myData: Array.from(myData) });
+  const myData = await ContactModel.myData();
+
+  const flashMessage = req.flash('error')[0];
+  const message = flashMessage || false;
+
+  res.render('home', { myData: Array.from(myData), message });
   return;
 };
