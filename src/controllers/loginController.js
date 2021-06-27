@@ -31,13 +31,11 @@ exports.logout = (req, res) => {
   res.redirect('/');
 };
 
-exports.register = async (req, res) => {
-  const data = req.body;
-  const user = await userModel.myData(data);
-  if (user) {
-    req.flash('error', 'Usuário já existe.');
-    return;
-  }
+    if (user !== null && email === user.email) {
+      req.flash('error', 'Usuário já existe.');
+      res.redirect('/login');
+      return;
+    }
   await userModel.createUser(data);
   res.redirect('/login');
 };
