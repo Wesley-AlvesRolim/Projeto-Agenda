@@ -26,10 +26,14 @@ exports.login = async (req, res) => {
   return;
 };
 
-exports.logout = (req, res) => {
-  req.session.destroy();
-  res.redirect('/');
-};
+  logout(req, res) {
+    req.session.destroy();
+    res.redirect('/');
+  }
+
+  async register(req, res) {
+    const { email, password } = req.body;
+    const user = await userModel.myData({ email });
 
     if (user !== null && email === user.email) {
       req.flash('error', 'Usuário já existe.');
