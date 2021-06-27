@@ -16,16 +16,16 @@ class Login {
       return;
     }
 
-  if (data.email === user.email && data.password === user.password) {
-    req.session.user = {
-      ...user,
-    };
-    res.redirect('/');
+    if (email === user.email && password === user.password) {
+      req.session.user = {
+        ...user,
+      };
+      res.redirect('/');
+      return;
+    }
+    res.redirect('/login');
     return;
   }
-  res.redirect('/login');
-  return;
-};
 
   logout(req, res) {
     req.session.destroy();
