@@ -1,5 +1,6 @@
 const ContactModel = require('../models/ContactModel');
-const { formatNumber } = require('../utils/utils');
+const { formatNumber } = require('../utils/formatNumber');
+
 class Contact {
   async newContact(req, res) {
     res.render('edit', { contactData: '' });
