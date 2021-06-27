@@ -7,14 +7,14 @@ class Login {
     res.render('registration-page', { message });
   }
 
-exports.login = async (req, res) => {
-  const data = req.body;
-  const user = await userModel.myData(data);
-  if (user === null || data.password !== user.password) {
-    req.flash('error', 'Por favor, verifique seu email e senha!');
-    res.redirect('/login');
-    return;
-  }
+  async login(req, res) {
+    const { email, password } = req.body;
+    const user = await userModel.myData({ email, password });
+    if (user === null || password !== user.password) {
+      req.flash('error', 'Por favor, verifique seu email e senha!');
+      res.redirect('/login');
+      return;
+    }
 
   if (data.email === user.email && data.password === user.password) {
     req.session.user = {
