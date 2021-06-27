@@ -36,6 +36,11 @@ exports.logout = (req, res) => {
       res.redirect('/login');
       return;
     }
-  await userModel.createUser(data);
-  res.redirect('/login');
-};
+
+    await userModel.createUser({ email, password });
+    req.flash('info', 'Usuário criado com sucesso.');
+    res.redirect('/login');
+  }
+}
+
+module.exports = new Login();
