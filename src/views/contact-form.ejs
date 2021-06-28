@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <%- include('./includes/head'); %>
+
+  <section class="new-container">
+    <header>
+      <h2>
+        <%= titulo %>
+      </h2>
+    </header>
+    <section class="content-new">
+      <h3>
+        Cadastrar contato.
+      </h3>
+      <div>
+        <% if (typeof contactData === 'object') { %>
+        <form action="/contact/edit/<%= contactData['_id'] %>" method="post">
+          <% } else { %>
+          <form action="/contact/new" method="post">
+            <% } %>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+            <p>
+              <label for="name">Nome</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value="<%= contactData.name %>"
+                required
+                placeholder=" "
+              />
+              <span></span>
+            </p>
+            <p>
+              <label for="surname">Sobrenome</label>
+              <input
+                type="text"
+                id="surname"
+                name="surname"
+                value="<%= contactData.surname %>"
+                required
+                placeholder=" "
+              />
+              <span></span>
+            </p>
+            <p>
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value="<%= contactData.email %>"
+                required
+                placeholder=" "
+              />
+              <span></span>
+            </p>
+            <p>
+              <label for="number">Número de telefone</label>
+              <input
+                type="text"
+                id="number"
+                name="number"
+                value="<%= contactData.number %>"
+                required
+                placeholder=" "
+              />
+              <span></span>
+            </p>
+            <button type="submit">Criar contato</button>
+          </form>
+        </form>
+      </div>
+    </section>
+  </section>
+
+<script src="../../assets/js/bundle.js"></script>
+</body>
+
+</html>
