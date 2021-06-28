@@ -17,8 +17,8 @@
     align-items: center;
 }
 
-.content-form>div,
-.content-new>div {
+.content-form > div,
+.content-new > div {
     min-width: 275px;
     width: calc(50% - 20px);
     height: 55vh;
@@ -27,8 +27,8 @@
     justify-content: center;
 }
 
-.content-form>div>header,
-.content-new>h3 {
+.content-form > div > header,
+.content-new > h3 {
     margin-bottom: 15px;
 }
 
@@ -55,8 +55,8 @@ form p {
     outline: none;
 }
 
-.content-form input+span,
-.content-new input+span {
+.content-form input + span,
+.content-new input + span {
     display: block;
     width: 100%;
     height: 2px;
@@ -65,14 +65,14 @@ form p {
     bottom: 15%;
     left: -1px;
     background: #fff;
-    transition: .25s ease;
+    transition: 0.25s ease;
     z-index: -1;
 }
 
-.content-form input:not(:placeholder-shown)+span,
-.content-new input:not(:placeholder-shown)+span,
-.content-form input:focus+span,
-.content-new input:focus+span {
+.content-form input:not(:placeholder-shown) + span,
+.content-new input:not(:placeholder-shown) + span,
+.content-form input:focus + span,
+.content-new input:focus + span {
     height: 50%;
 }
 
@@ -93,8 +93,8 @@ form p {
     background: #00bbf0;
     border-radius: 10px;
     white-space: nowrap;
-    transition: .5s;
-    opacity: .9;
+    transition: 0.5s;
+    opacity: 0.9;
 }
 
 .content-form button:hover,
@@ -105,9 +105,9 @@ form p {
     cursor: pointer;
 }
 
-@media (max-width:605px){
-    .content-form>div,
-    .content-new>div{
-        flex-grow: 1;
+@media (max-width: 620px) {
+    .content-form > div,
+    .content-new > div {
+        width: 100%;
     }
 }
