@@ -7,6 +7,22 @@ import './assets/css/error.css';
 
 import { form } from './assets/js/form';
 import { formatNumber } from './assets/js/utils';
-window.onload = formatNumber();
-form.validation();
-form.input();
+
+function errorMessage() {
+  const errorLayer = document.querySelector('.error-container');
+  if (errorLayer) {
+    setTimeout(() => {
+      errorLayer.classList.add('removing');
+    }, 5000);
+    setTimeout(() => {
+      errorLayer.remove();
+    }, 7000);
+  }
+}
+
+window.onload = function () {
+  formatNumber();
+  errorMessage();
+  form.validation();
+  form.input();
+};
