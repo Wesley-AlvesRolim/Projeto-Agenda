@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Open sans', 'FontAwesome', sans-serif;
+    font-family: "Open sans", "FontAwesome", sans-serif;
     color: #fff;
 }
 
@@ -17,8 +17,8 @@ body {
     overflow-x: hidden;
 }
 
-body>header {
-    width: 100vw;
+body > header {
+    width: 100%;
     height: 90px;
     padding: 20px;
     margin-bottom: 20px;
@@ -32,33 +32,88 @@ body>header {
     overflow: hidden;
 }
 
-body>header::before {
-    content: '';
+body > header::before {
+    content: "";
     width: 60%;
     height: 90px;
     position: absolute;
     top: 0;
     right: 0;
     background: #0681d4;
-    opacity: .5;
+    opacity: 0.5;
     z-index: -1;
-    transform: skew( 30deg, 0deg) translateX(30px);
+    transform: skew(30deg, 0deg) translateX(30px);
 }
 
-body>header>nav ul {
+body > header > nav ul {
     display: flex;
     justify-content: space-between;
+}
+
+body > header > div {
+    height: 100%;
+    width: 25px;
+    position: relative;
+    display: none;
+    transition: 0.25s;
+}
+
+body > header > div.active {
+    animation: turnToCloseIconRotate 0.75s ease forwards;
+}
+
+body > header > div.active .menu {
+    width: 100%;
+    transform: rotate(-45deg);
+    background-color: #ff5c5c;
+}
+
+body > header > div.active .menu::before {
+    animation: turnToCloseIcon1 0.5s ease forwards;
+}
+
+body > header > div.active .menu::after {
+    animation: turnToCloseIcon2 0.5s ease forwards;
+}
+
+body > header .menu {
+    width: 50%;
+    height: 5px;
+    border-radius: 10px;
+    background-color: #ddd;
+}
+
+body > header .menu::before {
+    content: "";
+    width: 100%;
+    height: 5px;
+    border-radius: 10px;
+    position: absolute;
+    right: 0;
+    top: 12px;
+    background-color: #ddd;
+}
+
+body > header .menu::after {
+    content: "";
+    width: 25%;
+    height: 5px;
+    border-radius: 12px;
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    background-color: #ddd;
 }
 
 .addContact {
     min-width: 150px;
 }
 
-body>header>nav ul li {
+body > header > nav ul li {
     list-style: none;
 }
 
-body>header button {
+body > header button {
     min-width: 65px;
     height: 35px;
     border: 1px solid transparent;
@@ -66,14 +121,63 @@ body>header button {
     background: #063b47;
     border-radius: 5px;
     text-transform: capitalize;
-    transition: .5s;
-    opacity: .9;
+    transition: 0.5s;
+    opacity: 0.9;
 }
 
-body>header button:hover {
+body > header button:hover {
     opacity: 1;
     border: 1px solid #fff;
     box-shadow: 0 0 5px #000;
     transform: scale(1.1) translateY(-5px);
     cursor: pointer;
+}
+
+@media (max-width: 620px) {
+    body > header > nav > ul {
+        display: none;
+    }
+
+    body > header > div {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}
+
+@keyframes turnToCloseIconRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes turnToCloseIcon1 {
+    0% {
+        transform: none;
+    }
+    50% {
+        transform: rotate(0deg) translateY(11px);
+    }
+    100% {
+        width: 100%;
+        transform: rotate(0deg) translateY(-12px);
+        background-color: #ff5c5c;
+    }
+}
+
+@keyframes turnToCloseIcon2 {
+    0% {
+        transform: none;
+    }
+    50% {
+        transform: rotate(0deg) translateY(-11px);
+    }
+    100% {
+        width: 100%;
+        transform: rotate(-90deg) translate(-10px, 0px);
+        background-color: #ff5c5c;
+    }
 }
