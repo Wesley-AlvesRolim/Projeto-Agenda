@@ -18,8 +18,18 @@ function errorMessage() {
   }
 }
 
+function menuClickEvent() {
+  const menu = document.querySelector('body > header > div');
+  const menuBar = document.querySelector('.menu-bar');
+  menu.addEventListener('click', () => {
+    menu.classList.toggle('active');
+    menuBar.classList.toggle('active');
+  });
+}
+
 window.onload = function () {
   formatNumber();
+  menuClickEvent();
   errorMessage();
   form.validation();
   form.input();

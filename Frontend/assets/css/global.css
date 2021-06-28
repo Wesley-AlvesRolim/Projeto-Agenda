@@ -28,11 +28,11 @@ body > header {
     align-items: center;
     background: #005792;
     box-shadow: 0 0 10px #fff;
-    z-index: 1;
     overflow: hidden;
 }
 
-body > header::before {
+body > header::before,
+.menu-bar nav::before {
     content: "";
     width: 60%;
     height: 90px;
@@ -41,13 +41,38 @@ body > header::before {
     right: 0;
     background: #0681d4;
     opacity: 0.5;
-    z-index: -1;
     transform: skew(30deg, 0deg) translateX(30px);
 }
 
 body > header > nav ul {
     display: flex;
     justify-content: space-between;
+}
+
+body li {
+    list-style: none;
+}
+
+body > header button,
+.menu-bar li button {
+    min-width: 65px;
+    height: 35px;
+    border: 1px solid transparent;
+    padding: 5px;
+    background: #063b47;
+    border-radius: 5px;
+    text-transform: capitalize;
+    transition: 0.5s;
+    opacity: 0.9;
+}
+
+body > header button:hover,
+.menu-bar li button:hover {
+    opacity: 1;
+    border: 1px solid #fff;
+    box-shadow: 0 0 5px #000;
+    transform: scale(1.1) translateY(-5px);
+    cursor: pointer;
 }
 
 body > header > div {
@@ -59,7 +84,7 @@ body > header > div {
 }
 
 body > header > div.active {
-    animation: turnToCloseIconRotate 0.75s ease forwards;
+    animation: turnToCloseIconRotate 0.75s ease both;
 }
 
 body > header > div.active .menu {
@@ -69,11 +94,11 @@ body > header > div.active .menu {
 }
 
 body > header > div.active .menu::before {
-    animation: turnToCloseIcon1 0.5s ease forwards;
+    animation: turnToCloseIcon1 0.5s ease both;
 }
 
 body > header > div.active .menu::after {
-    animation: turnToCloseIcon2 0.5s ease forwards;
+    animation: turnToCloseIcon2 0.5s ease both;
 }
 
 body > header .menu {
@@ -105,37 +130,62 @@ body > header .menu::after {
     background-color: #ddd;
 }
 
+.menu-bar {
+    height: 20%;
+    width: 100vw;
+    margin: -20px 0 10px 0;
+    position: relative;
+    right: 0;
+    top: 0;
+    display: none;
+    opacity: 0;
+    transition: 0.5s ease;
+}
+
+.menu-bar.active {
+    animation: showMenuBar 2s forwards;
+    display: none;
+}
+
+.menu-bar nav {
+    min-width: 100px;
+    padding: 10px;
+    background: #005792;
+    position: relative;
+}
+
+.menu-bar nav::before {
+    width: 100%;
+    height: 100%;
+    transform: none;
+}
+
+.menu-bar ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-bar li button {
+    width: 100%;
+}
+
+.menu-bar li + li {
+    margin-top: 5px;
+}
+
 .addContact {
     min-width: 150px;
-}
-
-body > header > nav ul li {
-    list-style: none;
-}
-
-body > header button {
-    min-width: 65px;
-    height: 35px;
-    border: 1px solid transparent;
-    padding: 5px;
-    background: #063b47;
-    border-radius: 5px;
-    text-transform: capitalize;
-    transition: 0.5s;
-    opacity: 0.9;
-}
-
-body > header button:hover {
-    opacity: 1;
-    border: 1px solid #fff;
-    box-shadow: 0 0 5px #000;
-    transform: scale(1.1) translateY(-5px);
-    cursor: pointer;
 }
 
 @media (max-width: 620px) {
     body > header > nav > ul {
         display: none;
+    }
+
+    .menu-bar.menu-bar.active {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
 
     body > header > div {
@@ -179,5 +229,17 @@ body > header button:hover {
         width: 100%;
         transform: rotate(-90deg) translate(-10px, 0px);
         background-color: #ff5c5c;
+    }
+}
+
+@keyframes showMenuBar {
+    0% {
+        transform: translateY(-40px);
+    }
+    50% {
+        transform: translateY(0px);
+    }
+    100% {
+        opacity: 1;
     }
 }
