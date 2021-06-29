@@ -39,10 +39,10 @@ app.set('view engine', 'ejs');
 app.use(title);
 app.use(alreadyRegistered);
 
-/* app.use(helmet()); //nn funciona sem o https
+app.use(helmet());
 app.use(csurf());
 app.use(csrfToken);
-app.use(checkCsrf); */
+app.use(checkCsrf);
 
 app.use(router);
 
