@@ -67,7 +67,10 @@
               />
               <span></span>
             </p>
-            <button type="submit">Criar contato</button>
+            <button type="submit">
+              <%= typeof contactData === 'object'? "Editar este" : "Criar" %> 
+              contato
+            </button>
           </form>
         </form>
       </div>
