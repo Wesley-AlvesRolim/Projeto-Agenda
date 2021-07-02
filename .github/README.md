@@ -22,7 +22,7 @@
 <p>This application you can register, sing in and create a contact list.</p>
 
 <br>
-<img src="./.github/readme.gif" alt="Readme Gif">
+<img src="./readme.gif" alt="Readme Gif">
 <br>
 <br>
 
