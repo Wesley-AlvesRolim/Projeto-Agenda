@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const userModel = require('../models/userModel');
 
 class Login {
@@ -33,7 +34,7 @@ class Login {
   }
 
   async register(req, res) {
-    const { email, password } = req.body;
+    let { email, password } = req.body;
     const user = await userModel.myData({ email });
 
     if (user !== null && email === user.email) {
@@ -41,6 +42,10 @@ class Login {
       res.redirect('/login');
       return;
     }
+
+    const salt = bcrypt.genSaltSync();
+    const hash = bcrypt.hashSync(password, salt);
+    password = hash;
 
     await userModel.createUser({ email, password });
     req.flash('info', 'Usuário criado com sucesso.');
