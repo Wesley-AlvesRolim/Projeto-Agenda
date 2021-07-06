@@ -10,14 +10,17 @@ class Login {
 
   async login(req, res) {
     const { email, password } = req.body;
-    const user = await userModel.myData({ email, password });
-    if (user === null || password !== user.password) {
+    const user = await userModel.myData({ email });
+    const userIsValidAndPasswordIsCorrect =
+      user !== null ? bcrypt.compareSync(password, user.password) : false;
+
+    if (!userIsValidAndPasswordIsCorrect) {
       req.flash('error', 'Por favor, verifique seu email e senha!');
       res.redirect('/login');
       return;
     }
 
-    if (email === user.email && password === user.password) {
+    if (email === user.email && userIsValidAndPasswordIsCorrect) {
       req.session.user = {
         ...user,
       };
