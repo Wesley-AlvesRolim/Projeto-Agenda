@@ -8,6 +8,12 @@ import { formatNumber } from './assets/js/utils';
 
 function errorMessage() {
   const errorLayer = document.querySelector('.error-container');
+  if (!errorLayer) return;
+  errorLayer.addEventListener('click', () => {
+    errorLayer.classList.add('removing');
+    setTimeout(() => errorLayer.remove(), 250);
+  });
+
   if (errorLayer) {
     setTimeout(() => {
       errorLayer.classList.add('removing');
