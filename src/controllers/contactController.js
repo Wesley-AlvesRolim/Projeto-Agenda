@@ -8,7 +8,11 @@ class Contact {
   }
 
   async newContactPost(req, res) {
-    const data = formatNumber(req);
+    let data = formatNumber(req);
+    data = {
+      ...data,
+      ownerId: req.session.user._doc._id,
+    };
     ContactModel.createDB(data);
     res.redirect('/');
     return;
