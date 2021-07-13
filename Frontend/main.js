@@ -3,11 +3,18 @@ import './assets/css/home.css';
 import './assets/css/login.css';
 import './assets/css/error.css';
 
-import { form } from './assets/js/form';
+import { form } from './assets/js/login-form';
+import { contactForm } from './assets/js/contact-form';
 import { formatNumber } from './assets/js/utils';
 
 function errorMessage() {
   const errorLayer = document.querySelector('.error-container');
+  if (!errorLayer) return;
+  errorLayer.addEventListener('click', () => {
+    errorLayer.classList.add('removing');
+    setTimeout(() => errorLayer.remove(), 250);
+  });
+
   if (errorLayer) {
     setTimeout(() => {
       errorLayer.classList.add('removing');
@@ -32,5 +39,5 @@ window.onload = function () {
   menuClickEvent();
   errorMessage();
   form.validation();
-  form.input();
+  contactForm.init();
 };
