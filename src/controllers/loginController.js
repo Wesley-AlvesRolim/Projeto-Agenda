@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const userModel = require('../models/userModel');
 
 class Login {
@@ -9,14 +10,17 @@ class Login {
 
   async login(req, res) {
     const { email, password } = req.body;
-    const user = await userModel.myData({ email, password });
-    if (user === null || password !== user.password) {
+    const user = await userModel.myData({ email });
+    const userIsValidAndPasswordIsCorrect =
+      user !== null ? bcrypt.compareSync(password, user.password) : false;
+
+    if (!userIsValidAndPasswordIsCorrect) {
       req.flash('error', 'Por favor, verifique seu email e senha!');
       res.redirect('/login');
       return;
     }
 
-    if (email === user.email && password === user.password) {
+    if (email === user.email && userIsValidAndPasswordIsCorrect) {
       req.session.user = {
         ...user,
       };
@@ -33,7 +37,7 @@ class Login {
   }
 
   async register(req, res) {
-    const { email, password } = req.body;
+    let { email, password } = req.body;
     const user = await userModel.myData({ email });
 
     if (user !== null && email === user.email) {
@@ -41,6 +45,10 @@ class Login {
       res.redirect('/login');
       return;
     }
+
+    const salt = bcrypt.genSaltSync();
+    const hash = bcrypt.hashSync(password, salt);
+    password = hash;
 
     await userModel.createUser({ email, password });
     req.flash('info', 'Usuário criado com sucesso.');
