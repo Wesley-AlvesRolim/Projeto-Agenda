@@ -12,7 +12,7 @@
         </header>
         <section class="content">
             <h3>
-                Abaixo está todos os seu contatos.
+                <%= myData.length === 0 ? 'Aqui estará todos os seus contatos.' : 'Abaixo está todos os seus contatos.'%> 
             </h3>
             <div>
                 <%- include('./includes/contacts') %>
