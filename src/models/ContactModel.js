@@ -27,9 +27,10 @@ class ContactModel {
     }
   }
 
-  async myData(id) {
-    let data = await this.ContactModel.find();
+  async myData(id, ownerId) {
+    let data = [];
     if (id) data = await this.ContactModel.findById(id);
+    if (ownerId) data = await this.ContactModel.find({ ownerId });
     return data;
   }
 
