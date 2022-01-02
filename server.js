@@ -1,4 +1,5 @@
 require('dotenv').config();
+const port = process.env.PORT;
 const path = require('path');
 const express = require('express');
 const app = express();
@@ -47,7 +48,5 @@ app.use(checkCsrf);
 app.use(router);
 
 app.on('Db conected', () => {
-  app.listen(3333, () => {
-    console.log('http:localhost:3333/');
-  });
+  app.listen(port, () => console.log('Port: ' + port));
 });
